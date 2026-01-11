@@ -1,0 +1,431 @@
+/* ============================================
+   GLOBAL STYLES - Dev Bansal Portfolio
+   Premium dark theme with electric accents
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+:root {
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Custom cursor (optional - uncomment if wanted) */
+  /* cursor: none; */
+  
+  /* Gradient definitions for reuse */
+  --gradient-electric: linear-gradient(135deg, #00f0ff 0%, #7c3aed 50%, #f59e0b 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+  --gradient-text: linear-gradient(90deg, #00f0ff, #7c3aed, #f59e0b, #00f0ff);
+  
+  /* Noise texture (base64 for performance) */
+  --noise-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   BASE RESETS & TYPOGRAPHY
+   ============================================ */
+@layer base {
+  * {
+    @apply border-slate;
+  }
+  
+  html {
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-void text-pearl font-body;
+    overflow-x: hidden;
+  }
+  
+  /* Selection styling */
+  ::selection {
+    @apply bg-electric/30 text-pearl;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-obsidian;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate rounded-full;
+    transition: background 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-electric/50;
+  }
+  
+  /* Focus states for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-electric ring-offset-2 ring-offset-obsidian;
+  }
+  
+  /* Links */
+  a {
+    @apply transition-colors duration-300;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-electric);
+    background-size: 200% auto;
+  }
+  
+  .gradient-text-animated {
+    @apply bg-clip-text text-transparent animate-gradient-shift;
+    background-image: var(--gradient-text);
+    background-size: 200% auto;
+  }
+  
+  /* Glow effects */
+  .glow {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+  }
+  
+  .glow-hover {
+    @apply transition-shadow duration-500;
+  }
+  
+  .glow-hover:hover {
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.2);
+  }
+  
+  /* Noise overlay */
+  .noise-overlay {
+    position: relative;
+  }
+  
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--noise-texture);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply bg-obsidian/60 backdrop-blur-xl border border-slate/30;
+  }
+  
+  .glass-dark {
+    @apply bg-void/80 backdrop-blur-2xl border border-slate/20;
+  }
+  
+  /* Magnetic hover effect container */
+  .magnetic {
+    @apply transition-transform duration-300 ease-expo-out;
+  }
+  
+  /* Line decoration */
+  .line-accent {
+    @apply relative;
+  }
+  
+  .line-accent::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 h-[2px] w-0 bg-electric transition-all duration-500 ease-expo-out;
+  }
+  
+  .line-accent:hover::after {
+    @apply w-full;
+  }
+  
+  /* Reveal animation helpers */
+  .reveal-up {
+    @apply opacity-0 translate-y-12;
+  }
+  
+  .reveal-up.active {
+    @apply opacity-100 translate-y-0 transition-all duration-800 ease-expo-out;
+  }
+  
+  /* Stagger children animation */
+  .stagger-children > * {
+    @apply opacity-0 translate-y-8;
+  }
+  
+  .stagger-children.active > *:nth-child(1) { transition-delay: 0ms; }
+  .stagger-children.active > *:nth-child(2) { transition-delay: 100ms; }
+  .stagger-children.active > *:nth-child(3) { transition-delay: 200ms; }
+  .stagger-children.active > *:nth-child(4) { transition-delay: 300ms; }
+  .stagger-children.active > *:nth-child(5) { transition-delay: 400ms; }
+  
+  .stagger-children.active > * {
+    @apply opacity-100 translate-y-0 transition-all duration-600 ease-expo-out;
+  }
+  
+  /* Text masks */
+  .text-mask {
+    @apply overflow-hidden;
+  }
+  
+  .text-mask > * {
+    @apply transform translate-y-full;
+  }
+  
+  .text-mask.active > * {
+    @apply translate-y-0 transition-transform duration-800 ease-expo-out;
+  }
+  
+  /* Card hover lift */
+  .card-hover {
+    @apply transition-all duration-500 ease-expo-out;
+  }
+  
+  .card-hover:hover {
+    @apply -translate-y-2 shadow-elevated;
+  }
+  
+  /* Border gradient */
+  .border-gradient {
+    position: relative;
+    background: linear-gradient(var(--tw-gradient-stops));
+  }
+  
+  .border-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-electric);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  
+  /* Clip path reveals */
+  .clip-reveal {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  
+  .clip-reveal.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  /* Dot pattern background */
+  .dots-pattern {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* ============================================
+   COMPONENT CLASSES
+   ============================================ */
+@layer components {
+  /* Primary button */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-heading text-sm font-semibold tracking-wider uppercase;
+    @apply bg-electric text-void rounded-full overflow-hidden;
+    @apply transition-all duration-500 ease-expo-out;
+    @apply hover:shadow-glow-lg hover:scale-105;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-white/20 translate-x-[-100%] skew-x-12;
+    @apply transition-transform duration-500 ease-expo-out;
+  }
+  
+  .btn-primary:hover::before {
+    @apply translate-x-[100%];
+  }
+  
+  /* Secondary button */
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-heading text-sm font-semibold tracking-wider uppercase;
+    @apply bg-transparent text-pearl border border-slate rounded-full overflow-hidden;
+    @apply transition-all duration-500 ease-expo-out;
+    @apply hover:border-electric hover:text-electric;
+  }
+  
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 font-body text-sm font-medium;
+    @apply text-silver transition-all duration-300;
+    @apply hover:text-electric hover:gap-3;
+  }
+  
+  /* Section container */
+  .section-container {
+    @apply relative w-full max-w-8xl mx-auto px-6 md:px-12 lg:px-24;
+  }
+  
+/* Section padding - reduced for tighter sections */
+.section-padding {
+  @apply py-8 md:py-12 lg:py-16;
+}
+  
+  /* Card base */
+  .card {
+    @apply relative bg-carbon border border-slate/50 rounded-2xl overflow-hidden;
+    @apply transition-all duration-500 ease-expo-out;
+  }
+  
+  .card:hover {
+    @apply border-electric/30;
+  }
+  
+  /* Tag/badge */
+  .tag {
+    @apply inline-flex items-center px-3 py-1 text-xs font-mono font-medium;
+    @apply bg-slate/50 text-silver rounded-full;
+    @apply transition-colors duration-300;
+  }
+  
+  .tag:hover {
+    @apply bg-electric/20 text-electric;
+  }
+  
+  /* Status indicator */
+  .status-dot {
+    @apply relative flex items-center gap-2;
+  }
+  
+  .status-dot::before {
+    content: '';
+    @apply w-2 h-2 bg-green-500 rounded-full animate-pulse;
+  }
+  
+  /* Divider */
+  .divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-slate to-transparent;
+  }
+  
+  /* Section label */
+  .section-label {
+    @apply inline-flex items-center gap-3 font-mono text-xs font-medium tracking-widest uppercase text-silver;
+  }
+  
+  .section-label::before {
+    content: '';
+    @apply w-8 h-px bg-electric;
+  }
+}
+
+/* ============================================
+   ANIMATIONS - GSAP HELPERS
+   ============================================ */
+
+/* Initial states for GSAP animations */
+[data-animate] {
+  visibility: hidden;
+}
+
+[data-animate].is-visible {
+  visibility: visible;
+}
+
+/* Split text animation targets */
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+/* Smooth scroll container (Lenis) */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+@media (max-width: 768px) {
+  .section-container {
+    @apply px-5;
+  }
+  
+  .section-padding {
+    @apply py-16;
+
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --gradient-electric: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+  }
+  
+  .glass,
+  .glass-dark {
+    @apply bg-void border-pearl/50;
+  }
+}
