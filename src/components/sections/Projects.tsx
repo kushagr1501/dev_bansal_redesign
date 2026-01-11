@@ -9,8 +9,6 @@ import {
   ExternalLink,
   Github,
   ArrowUpRight,
-  Sparkles,
-  Database,
   Eye,
   Star,
   GitFork,

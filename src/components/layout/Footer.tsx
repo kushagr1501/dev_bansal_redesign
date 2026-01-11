@@ -4,7 +4,7 @@
 
 import { memo } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUp, Heart, Github } from 'lucide-react';
+import { ArrowUp, Github } from 'lucide-react';
 
 const Footer = memo(() => {
   const scrollToTop = () => {

@@ -12,7 +12,6 @@ import {
   Database,
   LineChart,
   Sparkles,
-  Code2,
   Zap,
   Target,
 } from "lucide-react";

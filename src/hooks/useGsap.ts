@@ -78,11 +78,10 @@ export function useGsap() {
       delay,
       stagger,
       scrollTrigger: scrollTrigger ? {
-        trigger: scrollTrigger.trigger,
-        start: scrollTrigger.start || 'top 80%',
-        end: scrollTrigger.end || 'bottom 20%',
-        toggleActions: scrollTrigger.toggleActions || 'play none none reverse',
-        ...scrollTrigger
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse',
+        ...scrollTrigger,
       } : undefined
     });
   }, []);
@@ -110,10 +109,9 @@ export function useGsap() {
       delay,
       stagger,
       scrollTrigger: scrollTrigger ? {
-        trigger: scrollTrigger.trigger,
-        start: scrollTrigger.start || 'top 80%',
-        toggleActions: scrollTrigger.toggleActions || 'play none none reverse',
-        ...scrollTrigger
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+        ...scrollTrigger,
       } : undefined
     });
   }, []);
@@ -141,10 +139,9 @@ export function useGsap() {
       delay,
       stagger,
       scrollTrigger: scrollTrigger ? {
-        trigger: scrollTrigger.trigger,
-        start: scrollTrigger.start || 'top 80%',
-        toggleActions: scrollTrigger.toggleActions || 'play none none reverse',
-        ...scrollTrigger
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+        ...scrollTrigger,
       } : undefined
     });
   }, []);
@@ -172,10 +169,9 @@ export function useGsap() {
       delay,
       stagger,
       scrollTrigger: scrollTrigger ? {
-        trigger: scrollTrigger.trigger,
-        start: scrollTrigger.start || 'top 80%',
-        toggleActions: scrollTrigger.toggleActions || 'play none none reverse',
-        ...scrollTrigger
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+        ...scrollTrigger,
       } : undefined
     });
   }, []);
@@ -204,10 +200,9 @@ export function useGsap() {
       delay,
       stagger,
       scrollTrigger: scrollTrigger ? {
-        trigger: scrollTrigger.trigger,
-        start: scrollTrigger.start || 'top 80%',
-        toggleActions: scrollTrigger.toggleActions || 'play none none reverse',
-        ...scrollTrigger
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+        ...scrollTrigger,
       } : undefined
     });
   }, []);
@@ -245,10 +240,9 @@ export function useGsap() {
       delay,
       stagger,
       scrollTrigger: scrollTrigger ? {
-        trigger: scrollTrigger.trigger,
-        start: scrollTrigger.start || 'top 80%',
-        toggleActions: scrollTrigger.toggleActions || 'play none none reverse',
-        ...scrollTrigger
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+        ...scrollTrigger,
       } : undefined
     });
   }, []);

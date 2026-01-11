@@ -31,17 +31,17 @@ const charVariants = {
   },
 };
 
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
+// const fadeUpVariants = {
+//   hidden: { opacity: 0, y: 40 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       duration: 0.8,
+//       ease: [0.16, 1, 0.3, 1],
+//     },
+//   },
+// };
 
 // Animated text component - splits into characters
 const AnimatedText = memo(
