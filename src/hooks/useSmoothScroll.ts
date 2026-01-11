@@ -18,7 +18,8 @@ interface SmoothScrollOptions {
   smoothWheel?: boolean;
   syncTouch?: boolean;
   syncTouchLerp?: number;
-  touchInertiaMultiplier?: number;
+  touchMultiplier?: number;
+  wheelMultiplier?: number;
 }
 
 export function useSmoothScroll(options: SmoothScrollOptions = {}) {
@@ -37,7 +38,8 @@ export function useSmoothScroll(options: SmoothScrollOptions = {}) {
       smoothWheel: options.smoothWheel !== false,
       syncTouch: options.syncTouch || false,
       syncTouchLerp: options.syncTouchLerp || 0.075,
-      touchInertiaMultiplier: options.touchInertiaMultiplier || 35,
+      touchMultiplier: options.touchMultiplier || 2,
+      wheelMultiplier: options.wheelMultiplier || 1,
     });
     
     // Connect Lenis to GSAP ScrollTrigger
